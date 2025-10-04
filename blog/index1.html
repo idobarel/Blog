@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S1mple</title>
+    <link rel="stylesheet" href="../css/blog.css">
+</head>
+<body  id="home">
+    <div class="title">
+        <h1 id="main-header">s1mple</h1>
+        <h3 id="sub-header">security is simple.</h3>
+    </div>
+    <div class="posts">
+        <h2>Welcome to my blog!</h2>
+        <p>This is a space where I share my thoughts on cybersecurity, technology trends, and personal experiences in the field. Stay tuned for regular updates and insights!</p>
+        <h3>Recent Posts</h3>
+        <ul id="file-list">
+            
+        </ul>
+    </div>
+    <script>
+    const owner = "idobarel";
+    const repo = "blog";
+    const path = "blog/posts";
+
+    fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`)
+    .then(r => r.json())
+    .then(files => {
+        const list = document.getElementById("file-list");
+        files.forEach(f => {
+        if (f.type === "file") {
+            const li = document.createElement("li");
+            li.innerHTML = `<a href="${f.path}">${f.name}</a>`;
+            list.appendChild(li);
+        }
+        });
+    });
+    </script>
+</body>
+</html>
