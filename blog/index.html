@@ -31,7 +31,7 @@
         files.forEach(f => {
         if (f.type === "file") {
             const li = document.createElement("li");
-            li.innerHTML = `<a href="${f.path}">${f.name}</a>`;
+            li.innerHTML = `<a href="../${f.path}">${f.name}</a>`;
             list.appendChild(li);
         }
         });
@@ -39,3 +39,4 @@
     </script>
 </body>
 </html>
+
